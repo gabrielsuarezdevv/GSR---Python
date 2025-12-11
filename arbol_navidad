@@ -1,0 +1,25 @@
+n = int(input("Introduce la altura del árbol de Navidad (mínimo 3): "))
+
+if n < 3:
+    raise ValueError("La altura debe ser al menos 3")
+
+for i in range(n):
+    linea = " " * (n - i - 1)
+    for j in range(2 * i + 1):
+        if j == 0 or j == 2 * i or i == n - 1:
+            linea += "*"
+        else:
+            if (i + j) % 2 == 0:
+                linea += "*"
+            else:
+                linea += " "
+    print(linea)
+
+tronco_altura = n // 3
+tronco_ancho = n // 3
+if tronco_ancho % 2 == 0:
+    tronco_ancho += 1
+
+for _ in range(tronco_altura):
+    espacios = " " * (n - tronco_ancho // 2 - 1)
+    print(espacios + "*" * tronco_ancho)
